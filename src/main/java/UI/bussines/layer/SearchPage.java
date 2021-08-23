@@ -12,8 +12,11 @@ public class SearchPage {
     @FindBy (id = "search-input")
     WebElement searchInput;
 
-    @FindBy (className = "header-top-list__item promoted")
+    @FindBy (xpath = "//header/div[1]/div/div[2]/ul/li[1]")
     WebElement promoted;
+
+    @FindBy (xpath = "//div[1]/div[1]/div/div/div/div[4]/div[3]/div[1]")
+    WebElement promotion;
 
     @FindBy (xpath = "//div[1]/div[1]/nav/div[4]/ul/li[4]")
     WebElement hair;
@@ -32,10 +35,12 @@ public class SearchPage {
         searchInput.submit();
     }
 
-    public void openPromo(WebDriver webDriver){
+    public void openPromotion(WebDriver webDriver){
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(promoted));
         promoted.click();
+        wait.until(ExpectedConditions.elementToBeClickable(promotion));
+        promotion.click();
     }
 
     public void openHairBlock(WebDriver webDriver){
