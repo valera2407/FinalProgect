@@ -1,6 +1,6 @@
 package UI;
 
-import UI.bussines.layer.*;
+import UI.bussines.layer.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -18,7 +18,7 @@ public class BaseTest {
     SortedPage sorted;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         webDriver = new ChromeDriver();
         logIn = PageFactory.initElements(webDriver, LogInPage.class);
         search = PageFactory.initElements(webDriver, SearchPage.class);

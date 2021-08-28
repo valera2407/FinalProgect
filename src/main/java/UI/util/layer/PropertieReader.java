@@ -5,19 +5,17 @@ import java.util.Properties;
 
 public class PropertieReader {
 
-    static String email;
+     String email;
+     String passw;
 
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
-
-    public static String getPassw() {
+    public  String getPassw() {
         return passw;
     }
 
-    static String passw;
-
-    public static void reader()throws Exception {
+    public void reader()throws Exception {
         FileReader reader = new FileReader("src/main/resources/account.properties");
 
         Properties p = new Properties();

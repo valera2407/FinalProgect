@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 
 
 
-public class AccountData {
+/*public class AccountData {
     static String email;
     static String passw;
     static PropertieReader read;
@@ -22,4 +22,4 @@ public class AccountData {
                 {passw}
         };
     }
-}
+}*/
