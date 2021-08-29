@@ -1,5 +1,6 @@
 package UI.bussines.layer.pages;
 
+import UI.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,11 +15,10 @@ public class FilterPage {
     @FindBy (xpath = "//*[@id=\"input-checkbox-2247-24195\"]")
     WebElement age;
 
-    public void addFilters(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(shampoo));
+    public void addFilters(){
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(shampoo));
         shampoo.click();
-        wait.until(ExpectedConditions.elementToBeClickable(age));
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(age));
         age.click();
     }
 }

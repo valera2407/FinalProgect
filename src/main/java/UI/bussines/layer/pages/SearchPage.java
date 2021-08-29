@@ -1,5 +1,6 @@
 package UI.bussines.layer.pages;
 
+import UI.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -28,36 +29,32 @@ public class SearchPage {
     WebElement face;
 
 
-    public void search(String product, WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(searchInput));
+    public void search(String product){
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(searchInput));
         searchInput.sendKeys(product);
         searchInput.submit();
     }
 
-    public void openPromotion(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(promoted));
+    public void openPromotion(){
+
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(promoted));
         promoted.click();
-        wait.until(ExpectedConditions.elementToBeClickable(promotion));
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(promotion));
         promotion.click();
     }
 
-    public void openHairBlock(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(hair));
+    public void openHairBlock(){
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(hair));
         hair.click();
     }
 
-    public void openMensBlock(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(forMen));
+    public void openMensBlock(){
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(forMen));
         forMen.click();
     }
 
-    public void openFaceBlock(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(face));
+    public void openFaceBlock(){
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(face));
         face.click();
     }
 }

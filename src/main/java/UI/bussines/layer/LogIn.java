@@ -1,22 +1,23 @@
 package UI.bussines.layer;
 
-import UI.bussines.layer.pages.LogInPage;
+import UI.bussines.layer.pages.LogInLogOutPage;
 import UI.util.layer.PropertieReader;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-/*public class LogIn {
-    LogInPage logIn;
+import static UI.BaseTest.webDriver;
+
+public class LogIn {
+    /*LogInLogOutPage logIn;
     PropertieReader read = new PropertieReader();
     String mail;
     String password;
 
-    public void login(WebDriver webDriver) throws Exception {
+    public void login() throws Exception {
         read.reader();
-        logIn = PageFactory.initElements(webDriver, LogInPage.class);
+        logIn = PageFactory.initElements(webDriver, LogInLogOutPage.class);
         mail = read.getEmail();
         password = read.getPassw();
-        logIn.loginInAccount(mail, password, webDriver);
-    }
+        logIn.loginInAccount(mail, password);
+    }*/
 
-}*/
+}

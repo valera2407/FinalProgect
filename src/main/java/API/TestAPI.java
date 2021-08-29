@@ -1,12 +1,10 @@
 package API;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Resources;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.net.URL;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -14,49 +12,55 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class TestAPI extends BaseTest {
 
-    URL file;
-    String myJson;
-    MyDate date = new MyDate();
+    private BookDTO book;
+    private ListBooksDTO listBooks;
+    JsonReader jsonReader = new JsonReader();
+    CheckCreatePutAsserts checkCreatePutAsserts = new CheckCreatePutAsserts();
 
     @BeforeMethod
     public void beforeMethod() throws IOException {
-        file = Resources.getResource("book.json");
-        myJson = Resources.toString(file, Charsets.UTF_8);
+        jsonReader.read();
     }
 
 
     @Test
     public void get() {
-        var response = given().when().get(Endpoints.getBook)
-                .then().extract().response();
+        book = given().when().get(Endpoints.getBook)
+                .then().assertThat().extract().response().as(BookDTO.class);
 
-        date.setId(response.jsonPath().getString("id"));
+        Assert.assertNotNull(book);
+        Assert.assertEquals(book.getPageCount(), Answers.getBookPageCount);
+        Assert.assertEquals(book.getId(), Answers.getBookId);
+        Assert.assertEquals(book.getTitle(), Answers.getBookTitle);
     }
 
     @Test
     public void getAll() {
-        var listId = given().when().get(Endpoints.getBooks)
-                .then().extract().response().jsonPath().getList("id");
+        listBooks = given().when().get(Endpoints.getBooks)
+                .then().assertThat().extract().response().as(ListBooksDTO.class);
 
-        System.out.println(listId.size());
+        Assert.assertNotNull(listBooks);
+        Assert.assertNotNull(listBooks.getBooks());
     }
 
 
     @Test
     public void post() {
-        given().body(myJson)
+        book = given().body(jsonReader.myJson)
                 .when().post(Endpoints.postBook)
-                .then().body("id", equalTo(201),
-                "description", equalTo("description"));
+                .then().assertThat().extract().response().as(BookDTO.class);
+
+        checkCreatePutAsserts.check(book);
     }
 
 
     @Test
     public void put() {
-        given().body(myJson)
-                .when().put(Endpoints.putBook + date.getId())
-                .then().body("id", equalTo(201),
-                "excerpt", equalTo("excerpt"));
+        book = given().body(jsonReader.myJson)
+                .when().put(Endpoints.putBook)
+                .then().assertThat().extract().response().as(BookDTO.class);
+
+        checkCreatePutAsserts.check(book);
     }
 
 

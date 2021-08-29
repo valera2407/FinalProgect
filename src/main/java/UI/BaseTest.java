@@ -4,13 +4,15 @@ import UI.bussines.layer.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
 
-    WebDriver webDriver;
-    LogInPage logIn;
+    public static WebDriver webDriver;
+    public static WebDriverWait wait;
+    LogInLogOutPage logInOut;
     SearchPage search;
     CartPage cart;
     OpenProductPage openProduct;
@@ -20,7 +22,8 @@ public class BaseTest {
     @BeforeClass
     public void beforeClass() {
         webDriver = new ChromeDriver();
-        logIn = PageFactory.initElements(webDriver, LogInPage.class);
+        wait = new WebDriverWait(BaseTest.webDriver, 10);
+        logInOut = PageFactory.initElements(webDriver, LogInLogOutPage.class);
         search = PageFactory.initElements(webDriver, SearchPage.class);
         cart = PageFactory.initElements(webDriver, CartPage.class);
         openProduct = PageFactory.initElements(webDriver, OpenProductPage.class);
@@ -28,11 +31,15 @@ public class BaseTest {
         sorted = PageFactory.initElements(webDriver, SortedPage.class);
         webDriver.manage().window().maximize();
         webDriver.get("https://makeup.com.ua/");
-        logIn.loginInAccount("ffoto4418@gmail.com", "ffoto", webDriver);
+        //new LogIn().login();
+        logInOut.loginInAccount("ffoto4418@gmail.com", "ffoto");
     }
 
     @AfterClass
     public void afterClass(){
+        cart.openYourCart();
+        cart.cleanCart();
+        logInOut.logOutAccount();
         webDriver.quit();
     }
 }

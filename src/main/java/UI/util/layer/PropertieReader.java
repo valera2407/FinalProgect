@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class PropertieReader {
 
-     String email;
+    /* String email;
      String passw;
 
     public String getEmail() {
@@ -22,5 +22,5 @@ public class PropertieReader {
         p.load(reader);
         email = p.getProperty("email");
         passw = p.getProperty("password");
-    }
+    }*/
 }

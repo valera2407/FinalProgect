@@ -1,5 +1,6 @@
 package UI.bussines.layer.pages;
 
+import UI.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,39 +27,34 @@ public class SortedPage {
     @FindBy (xpath = "//*[@id=\"sort-form\"]/ul/li[6]/label")
     WebElement downscale;
 
-    public void sortedFromName(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.invisibilityOfAllElements(name));
+
+    public void sortedFromName(){
+        BaseTest.wait.until(ExpectedConditions.invisibilityOfAllElements(name));
         name.click();
     }
 
-    public void sortedFromPrice(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(price));
+    public void sortedFromPrice(){
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(price));
         price.click();
     }
 
-    public void sortedFromRating(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(rating));
+    public void sortedFromRating(){
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(rating));
         rating.click();
     }
 
-    public void sortedFromDate(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(date));
+    public void sortedFromDate(){
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(date));
         date.click();
     }
 
-    public void upscaleSorted(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(upscale));
+    public void upscaleSorted(){
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(upscale));
         upscale.click();
     }
 
-    public void downscaleSorted(WebDriver webDriver){
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(downscale));
+    public void downscaleSorted(){
+        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(downscale));
         downscale.click();
     }
 }
