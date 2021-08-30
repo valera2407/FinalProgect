@@ -1,7 +1,6 @@
 package UI;
 
 import UI.dataprovide.SearchProvider;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class UITest extends BaseTest {
         search.openPromotion();
         openProduct.openPromotionProduct();
         cart.addToCart();
-        cart.continueSearch();
+        cart.cleanCart();
     }
 
     @Test(dataProvider = "productProvider",
@@ -23,7 +22,7 @@ public class UITest extends BaseTest {
             search.search(product);
             openProduct.openSearchProduct();
             cart.addToCart();
-            cart.continueSearch();
+            cart.cleanCart();
         }
     }
 
@@ -33,7 +32,7 @@ public class UITest extends BaseTest {
         filters.addFilters();
         openProduct.openProductWithFilter();
         cart.addToCart();
-        cart.continueSearch();
+        cart.cleanCart();
     }
 
     @Test
@@ -41,15 +40,9 @@ public class UITest extends BaseTest {
         search.openHairBlock();
         sorted.sortedFromPrice();
         sorted.downscaleSorted();
-        openProduct.openProductWithFilter();
+        openProduct.openBiggest();
         cart.addToCart();
-        cart.continueSearch();
-        search.openFaceBlock();
-        sorted.sortedFromName();
-        sorted.upscaleSorted();
-        openProduct.openProductWithFilter();
-        cart.addToCart();
-        cart.continueSearch();
+        cart.cleanCart();
     }
 
     @Test
@@ -59,5 +52,6 @@ public class UITest extends BaseTest {
         cart.addToCart();
         cart.makeOrder();
         cart.openHomePage();
+        cart.clean();
     }
 }

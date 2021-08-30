@@ -1,10 +1,12 @@
-package API;
+package API.util;
 
+import API.Answers;
+import API.DTO.BookDTO;
 import org.testng.Assert;
 
-public class CheckCreatePutAsserts {
+public class VerifyHelper {
 
-    public void check(BookDTO book){
+    public static void verify(BookDTO book){
         Assert.assertNotNull(book);
         Assert.assertEquals(book.getPageCount(), Answers.createPutPageCount);
         Assert.assertEquals(book.getId(), Answers.createPutId);

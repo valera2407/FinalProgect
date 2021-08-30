@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import java.util.concurrent.TimeUnit;
+
 public class BaseTest {
 
     public static WebDriver webDriver;
@@ -29,16 +31,13 @@ public class BaseTest {
         openProduct = PageFactory.initElements(webDriver, OpenProductPage.class);
         filters = PageFactory.initElements(webDriver, FilterPage.class);
         sorted = PageFactory.initElements(webDriver, SortedPage.class);
-        webDriver.manage().window().maximize();
         webDriver.get("https://makeup.com.ua/");
-        //new LogIn().login();
+        webDriver.manage().window().maximize();
         logInOut.loginInAccount("ffoto4418@gmail.com", "ffoto");
     }
 
     @AfterClass
     public void afterClass(){
-        cart.openYourCart();
-        cart.cleanCart();
         logInOut.logOutAccount();
         webDriver.quit();
     }

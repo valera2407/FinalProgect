@@ -1,18 +1,20 @@
-package API;
+package API.util;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+import lombok.Data;
 
 import java.io.IOException;
 import java.net.URL;
 
+@Data
 public class JsonReader {
 
-    URL file;
-    String myJson;
+    private URL file;
+    private String myJson;
 
     public void read() throws IOException {
-        file = Resources.getResource("book.json");
-        myJson = Resources.toString(file, Charsets.UTF_8);
+        setFile(Resources.getResource("book.json"));
+        setMyJson(Resources.toString(file, Charsets.UTF_8));
     }
 }

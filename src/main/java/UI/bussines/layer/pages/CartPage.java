@@ -58,11 +58,12 @@ public class CartPage {
     }
 
     public void cleanCart() {
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(remove));
-        remove.click();
-        /*while (remove.isDisplayed()){
             BaseTest.wait.until(ExpectedConditions.elementToBeClickable(remove));
             remove.click();
-        }*/
+    }
+
+    public void clean(){
+        openYourCart();
+        cleanCart();
     }
 }

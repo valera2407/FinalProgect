@@ -1,4 +1,4 @@
-package API;
+package API.util;
 
 
 public final class Endpoints {

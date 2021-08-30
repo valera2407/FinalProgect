@@ -1,5 +1,6 @@
-package API;
+package API.util;
 
+import API.util.Endpoints;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;

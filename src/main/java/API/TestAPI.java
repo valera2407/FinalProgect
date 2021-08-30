@@ -1,11 +1,16 @@
 package API;
 
+import API.DTO.BookDTO;
+import API.DTO.ListBooksDTO;
+import API.util.Endpoints;
+import API.util.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static API.util.VerifyHelper.verify;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -15,7 +20,7 @@ public class TestAPI extends BaseTest {
     private BookDTO book;
     private ListBooksDTO listBooks;
     JsonReader jsonReader = new JsonReader();
-    CheckCreatePutAsserts checkCreatePutAsserts = new CheckCreatePutAsserts();
+
 
     @BeforeMethod
     public void beforeMethod() throws IOException {
@@ -46,21 +51,21 @@ public class TestAPI extends BaseTest {
 
     @Test
     public void post() {
-        book = given().body(jsonReader.myJson)
+        book = given().body(jsonReader.getMyJson())
                 .when().post(Endpoints.postBook)
                 .then().assertThat().extract().response().as(BookDTO.class);
 
-        checkCreatePutAsserts.check(book);
+        verify(book);
     }
 
 
     @Test
     public void put() {
-        book = given().body(jsonReader.myJson)
+        book = given().body(jsonReader.getMyJson())
                 .when().put(Endpoints.putBook)
                 .then().assertThat().extract().response().as(BookDTO.class);
 
-        checkCreatePutAsserts.check(book);
+        verify(book);
     }
 
 

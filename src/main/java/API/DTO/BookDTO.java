@@ -1,4 +1,4 @@
-package API;
+package API.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
