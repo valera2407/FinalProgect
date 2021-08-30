@@ -21,6 +21,7 @@ public class OpenProductPage {
 
     @FindBy (xpath = "//div[1]/div[1]/div/div/div[2]/div[1]/div[1]/div/div[9]/ul/li[2]/div[2]")
     WebElement biggestPrice;
+
     public void openPromotionProduct(){
         BaseTest.wait.until(ExpectedConditions.elementToBeClickable(promotion));
         promotion.click();
