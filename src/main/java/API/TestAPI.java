@@ -1,15 +1,17 @@
 package API;
 
 import API.DTO.BookDTO;
-import API.DTO.ListBooksDTO;
+import API.util.Answers;
 import API.util.Endpoints;
 import API.util.JsonReader;
+import org.hamcrest.Matchers;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static API.util.Endpoints.getBook;
 import static API.util.VerifyHelper.verify;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -28,8 +30,8 @@ public class TestAPI extends BaseTestAPI {
 
 
     @Test
-    public void get() {
-        book = given().when().get(Endpoints.getBook)
+    public void getBook() {
+        book = given().when().get(getBook)
                 .then().assertThat().extract().response().as(BookDTO.class);
 
         Assert.assertNotNull(book);
@@ -39,17 +41,14 @@ public class TestAPI extends BaseTestAPI {
     }
 
     @Test
-    public void getAll() {
-        ListBooksDTO listBooks = given().when().get(Endpoints.getBooks)
-                .then().assertThat().extract().body().as(ListBooksDTO.class);
-
-        Assert.assertNotNull(listBooks);
-        Assert.assertNotNull(listBooks.getBooks());
+    public void getAllBooks() {
+         given().when().get(Endpoints.getBooks)
+                .then().assertThat().body("id", Matchers.hasSize(200));
     }
 
 
     @Test
-    public void post() {
+    public void postBook() {
         book = given().body(jsonReader.getMyJson())
                 .when().post(Endpoints.postBook)
                 .then().assertThat().extract().response().as(BookDTO.class);
@@ -59,7 +58,7 @@ public class TestAPI extends BaseTestAPI {
 
 
     @Test
-    public void put() {
+    public void putBook() {
         book = given().body(jsonReader.getMyJson())
                 .when().put(Endpoints.putBook)
                 .then().assertThat().extract().response().as(BookDTO.class);
@@ -69,7 +68,7 @@ public class TestAPI extends BaseTestAPI {
 
 
     @Test
-    public void delete() {
+    public void deleteBook() {
         given().when().delete(Endpoints.deleteBook)
                 .then().header("server", equalTo("Kestrel"));
     }

@@ -1,0 +1,14 @@
+<suite name="AllTests">
+
+    <listeners>
+        <listener class-name="UI.util.layer.Lisen"/>
+    </listeners>
+
+    <test name="Test Cases">
+        <classes>
+            <class name="UI.AlloUI"/>
+            <class name="API.TestAPI"/>
+        </classes>
+    </test>
+
+</suite>
