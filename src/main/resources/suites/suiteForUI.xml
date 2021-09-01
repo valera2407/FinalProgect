@@ -1,0 +1,9 @@
+<suite name = "alloUISuite">
+    <test name = "alloUITest">
+        <classes name = "alloUI">
+            <class name = "UI.AlloUI">
+                AlloUI
+            </class>
+        </classes>
+    </test>
+</suite>

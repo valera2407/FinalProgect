@@ -1,59 +1,32 @@
 package UI.bussines.layer.pages;
 
-import UI.BaseTest;
+import UI.BaseTestUI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CartPage {
 
-    @FindBy(xpath = "//div[2]/div/div[1]/div[4]/div[1]/div")
+    @FindBy(xpath = "//div[3]/div/div/div[3]/div/div[1]/footer/div/button")
     WebElement order;
 
-    @FindBy(xpath = "//div[1]/div[1]/div/div/div[2]/div[1]/div/div[3]/div[3]/div[1]")
+    @FindBy(id = "product-buy-button")
     WebElement buy;
 
-    @FindBy(className = "header-basket")
-    WebElement openCart;
+    @FindBy(className = "comeback")
+    WebElement backToShop;
 
-    @FindBy(className = "product__button-remove")
-    WebElement remove;
-
-    @FindBy(xpath = "//*[@id=\"checkout-form\"]/div[1]/div[2]/div[2]/label")
-    WebElement checkoutForm;
-
-    @FindBy(xpath = "//div[1]/div[1]/header/div/div/a")
-    WebElement homePage;
+    public void continueSearch() {
+        BaseTestUI.wait.until(ExpectedConditions.elementToBeClickable(backToShop));
+        backToShop.click();
+    }
 
     public void addToCart() {
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(buy));
+        BaseTestUI.wait.until(ExpectedConditions.elementToBeClickable(buy));
         buy.click();
     }
-
-    public void makeOrder() {
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(order));
+    public void order(){
+        BaseTestUI.wait.until(ExpectedConditions.elementToBeClickable(order));
         order.click();
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(checkoutForm));
-        checkoutForm.click();
-    }
-
-    public void openYourCart() {
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(openCart));
-        openCart.click();
-    }
-
-    public void openHomePage() {
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(homePage));
-        homePage.click();
-    }
-
-    public void cleanCart() {
-            BaseTest.wait.until(ExpectedConditions.elementToBeClickable(remove));
-            remove.click();
-    }
-
-    public void clean(){
-        openYourCart();
-        cleanCart();
     }
 }

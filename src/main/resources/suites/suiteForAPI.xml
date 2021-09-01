@@ -1,0 +1,9 @@
+<suite name = "APISuite">
+    <test name = "APITest">
+        <classes name = "API">
+            <class name = "API.TestAPI">
+                TestAPI
+            </class>
+        </classes>
+    </test>
+</suite>

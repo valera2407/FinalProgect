@@ -1,57 +1,58 @@
 package UI.bussines.layer.pages;
 
-import UI.BaseTest;
+import UI.BaseTestUI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+
 public class SearchPage {
 
-    @FindBy (id = "search-input")
+    @FindBy (id = "search-form__input")
     WebElement searchInput;
 
-    @FindBy (xpath = "//header/div[1]/div/div[2]/ul/li[1]")
+    @FindBy (xpath = "//*[@id=\"__layout\"]/div/div[1]/div[1]/div[2]/div/ul/li[4]/a")
     WebElement promoted;
 
-    @FindBy (xpath = "//div[1]/div[1]/div/div/div/div[4]/div[3]/div[1]")
+    @FindBy (xpath = "//*[@id=\"__layout\"]/div/div[2]/div[1]/div[2]/div[2]/div[1]/a[1]")
     WebElement promotion;
 
-    @FindBy (xpath = "//div[1]/div[1]/nav/div[4]/ul/li[4]")
-    WebElement hair;
+    @FindBy (xpath = "//*[@id=\"__layout\"]/div/div[1]/div[1]/div[3]/div/div/div[2]/div/ul/li[2]/a")
+    WebElement smartphones;
 
-    @FindBy (xpath = "//div[1]/div[1]/nav/div[4]/ul/li[7]")
-    WebElement forMen;
+    @FindBy (xpath = "//*[@id=\"__layout\"]/div/div[2]/div[2]/div[2]/div[1]/div[1]/div/div/div/div[2]/div/div[2]/ul/li[4]/a")
+    WebElement seriesS21;
 
-    @FindBy (xpath = "//div[1]/div[1]/nav/div[4]/ul/li[5]")
-    WebElement face;
+    @FindBy (xpath = "//*[@id=\"__layout\"]/div/div[1]/div[1]/div[3]/div/div/div[2]/div/ul/li[3]/a")
+    WebElement tvBlock;
 
+    @FindBy (xpath = "//*[@id=\"__layout\"]/div/div[2]/div[2]/div[2]/div[1]/div[1]/div/h2/a")
+    WebElement allTV;
 
     public void search(String product){
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(searchInput));
+        BaseTestUI.wait.until(ExpectedConditions.elementToBeClickable(searchInput));
         searchInput.sendKeys(product);
         searchInput.submit();
     }
 
     public void openPromotion(){
-
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(promoted));
+        BaseTestUI.wait.until(ExpectedConditions.elementToBeClickable(promoted));
         promoted.click();
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(promotion));
+        BaseTestUI.wait.until(ExpectedConditions.elementToBeClickable(promotion));
         promotion.click();
     }
 
-    public void openHairBlock(){
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(hair));
-        hair.click();
+    public void openS21Series(){
+        BaseTestUI.wait.until(ExpectedConditions.elementToBeClickable(smartphones));
+        smartphones.click();
+        BaseTestUI.wait.until(ExpectedConditions.elementToBeClickable(seriesS21));
+        seriesS21.click();
     }
 
-    public void openMensBlock(){
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(forMen));
-        forMen.click();
-    }
-
-    public void openFaceBlock(){
-        BaseTest.wait.until(ExpectedConditions.elementToBeClickable(face));
-        face.click();
+    public void openTVBlock(){
+        BaseTestUI.wait.until(ExpectedConditions.elementToBeClickable(tvBlock));
+        tvBlock.click();
+        BaseTestUI.wait.until(ExpectedConditions.elementToBeClickable(allTV));
+        allTV.click();
     }
 }

@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeTest;
 import static API.util.ResponseRequestSpec.requestSpec;
 import static API.util.ResponseRequestSpec.status200;
 
-public class BaseTest {
+public class BaseTestAPI {
 
     @BeforeTest
     public void beforeTest(){

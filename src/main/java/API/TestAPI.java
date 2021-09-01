@@ -15,10 +15,9 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 
-public class TestAPI extends BaseTest {
+public class TestAPI extends BaseTestAPI {
 
     private BookDTO book;
-    private ListBooksDTO listBooks;
     JsonReader jsonReader = new JsonReader();
 
 
@@ -41,8 +40,8 @@ public class TestAPI extends BaseTest {
 
     @Test
     public void getAll() {
-        listBooks = given().when().get(Endpoints.getBooks)
-                .then().assertThat().extract().response().as(ListBooksDTO.class);
+        ListBooksDTO listBooks = given().when().get(Endpoints.getBooks)
+                .then().assertThat().extract().body().as(ListBooksDTO.class);
 
         Assert.assertNotNull(listBooks);
         Assert.assertNotNull(listBooks.getBooks());
